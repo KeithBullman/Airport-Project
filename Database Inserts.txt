@@ -1,0 +1,28 @@
+use r00178736_flightsystem;
+
+//admin
+INSERT INTO admin VALUES ("admin", "password");
+
+//client
+INSERT INTO client VALUES ("Kooth", "Keith", "Bullman", "keithbullman@gmail.com", 877834483, "test");
+
+//countries
+INSERT INTO country VALUES ("FR", "France");
+INSERT INTO country VALUES ("GB", "England");
+INSERT INTO country VALUES ("IRE", "Ireland");
+INSERT INTO country VALUES ("UAE", "United Arab Emirates");
+
+//planes
+INSERT INTO planes VALUES ("AERLINGUS", "AX500", 250);
+INSERT INTO planes VALUES ("EMIRATES", "AC130", 300);
+
+//airports
+INSERT INTO airport VALUES ("CDG", "Charles de Gaulle", "Paris", "FR");
+INSERT INTO airport VALUES ("CRK", "Cork Airport", "Cork", "IRE");
+INSERT INTO airport VALUES ("DXB", "Dubai International", "Dubai", "UAE");
+INSERT INTO airport VALUES ("LCY", "London City Airport", "London", "GB");
+
+//flight
+INSERT INTO flight (planeCompany, flightDepart, flightTime, flightArrive) VALUES ("AERLINGUS", "CRK", 1400, "CDG");
+INSERT INTO flight (planeCompany, flightDepart, flightTime, flightArrive) VALUES ("EMIRATES", "LCY", 0500, "DXB");
+

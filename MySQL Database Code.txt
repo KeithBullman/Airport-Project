@@ -1,0 +1,64 @@
+/**
+ * Name: Keith Bullman
+ * ID: R00178736
+ * Class: SDH2-A
+ */
+
+CREATE TABLE plane (
+planeCompany varchar(15) NOT NULL, 
+planeType varchar(10) NOT NULL, 
+planeCapacity int(5) NOT NULL, 
+PRIMARY KEY (planeCompany));
+
+CREATE TABLE flight (
+flightId int(3) NOT NULL AUTO_INCREMENT, 
+planeCompany varchar(15) NOT NULL, 
+flightDepart varchar(3) NOT NULL, 
+flightTime int(4) NOT NULL, 
+flightArrive varchar(10) NOT NULL, 
+PRIMARY KEY (flightId));
+
+CREATE TABLE client (
+clientUsername varchar(15) NOT NULL, 
+fName varchar(20) NOT NULL, 
+lName varchar(20) NOT NULL, 
+email varchar(50) NOT NULL, 
+phone int(10), 
+password varchar(25), 
+PRIMARY KEY (clientUsername));
+
+CREATE TABLE booking (
+bookId int(3) NOT NULL AUTO_INCREMENT, 
+clientUsername varchar(15) NOT NULL, 
+flightId int(3) NOT NULL, 
+seatId int(3) NOT NULL, 
+airportId varchar(3) NOT NULL, 
+PRIMARY KEY (bookId));
+
+CREATE TABLE country 
+(countryCode char(3) NOT NULL, 
+countryName varchar(20), 
+PRIMARY KEY (countryCode));
+
+CREATE TABLE airport (
+airportId varchar(3) NOT NULL, 
+name varchar(20), 
+city varchar(20) NOT NULL, 
+countryCode char(3) NOT NULL, 
+PRIMARY KEY (airportId));
+
+CREATE TABLE admin (
+adminUsername varchar(15), 
+password varchar(25));
+
+ALTER TABLE booking ADD CONSTRAINT FKbooking359451 FOREIGN KEY (clientUsername) REFERENCES client (clientUsername);
+
+ALTER TABLE booking ADD CONSTRAINT FKbooking25400 FOREIGN KEY (flightId) REFERENCES flight (flightId);
+
+ALTER TABLE flight ADD CONSTRAINT FKflight15241 FOREIGN KEY (planeCompany) REFERENCES plane (planeCompany);
+
+ALTER TABLE airport ADD CONSTRAINT FKairport998465 FOREIGN KEY (countryCode) REFERENCES country (countryCode);
+
+ALTER TABLE flight ADD CONSTRAINT FKflight361300 FOREIGN KEY (flightDepart) REFERENCES airport (airportId);
+
+ALTER TABLE booking ADD CONSTRAINT FKbooking535142 FOREIGN KEY (airportId) REFERENCES airport (airportId);
